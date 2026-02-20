@@ -178,10 +178,15 @@ http://127.0.0.1:5000
 Add screenshots here after running the app:
 
 * Dashboard
+  <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c530383c-4c67-4653-81cb-be300c03fa92" />
 * Vendor List
+ <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/cc8b90b8-c765-4104-9db6-fcd642fe6dac" />
 * Product List
+  <img width="1755" height="987" alt="image" src="https://github.com/user-attachments/assets/00aa7769-b0eb-4cdf-b294-e4a686d15a29" />
 * Create Purchase Order
+ <img width="1755" height="987" alt="image" src="https://github.com/user-attachments/assets/0acb8f02-ad12-40f4-ac7e-435635c86459" />
 * Reports Page
+ <img width="1755" height="987" alt="image" src="https://github.com/user-attachments/assets/d9d0b9e5-376f-464b-a480-bbf97b0f5add" />
 
 ---
 
