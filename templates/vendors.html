@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Vendors</h2>
+
+<form method="GET" action="/vendors" class="mb-3">
+    <input class="form-control" type="text" name="search" placeholder="Search vendor by name">
+</form>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Action</th>
+    </tr>
+
+    {% for vendor in vendors %}
+    <tr>
+        <td>{{ vendor.id }}</td>
+        <td>{{ vendor.name }}</td>
+        <td>{{ vendor.email }}</td>
+        <td>{{ vendor.phone }}</td>
+        <td>{{ vendor.address }}</td>
+        <td>
+            <a class="btn btn-sm btn-warning" href="/edit-vendor/{{ vendor.id }}">Edit</a>
+            <a class="btn btn-sm btn-danger"
+                href="/delete-vendor/{{ vendor.id }}"
+                onclick="return confirmDelete('Are you sure you want to delete this vendor?')">
+                Delete
+                </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

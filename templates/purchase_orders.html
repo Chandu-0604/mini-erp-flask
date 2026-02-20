@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Purchase Orders</h2>
+
+<form method="GET" action="/purchase-orders" class="mb-3">
+
+    <select class="form-select" name="status" onchange="this.form.submit()">
+        <option value="">All Orders</option>
+        <option value="Pending">Pending</option>
+        <option value="Approved">Approved</option>
+    </select>
+
+</form>
+
+<table class="table table-bordered table-hover">
+<tr>
+    <th>ID</th>
+    <th>Vendor</th>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Date</th>
+    <th>Status</th>
+    <th>Action</th>
+</tr>
+
+{% for order in orders %}
+<tr>
+    <td>{{ order.id }}</td>
+    <td>{{ order.vendor.name }}</td>
+    <td>{{ order.product.name }}</td>
+    <td>{{ order.quantity }}</td>
+    <td>{{ order.order_date.strftime('%Y-%m-%d') }}</td>
+    <td>
+        {% if order.status == "Approved" %}
+            <span class="badge bg-success">Approved</span>
+        {% elif order.status == "Cancelled" %}
+            <span class="badge bg-danger">Cancelled</span>
+        {% else %}
+            <span class="badge bg-warning text-dark">Pending</span>
+        {% endif %}
+    </td>
+    <td>
+
+        {% if order.status == "Pending" %}
+            <a class="btn btn-sm btn-success" href="/approve-po/{{ order.id }}">Approve</a>
+            <a class="btn btn-sm btn-danger" href="/cancel-po/{{ order.id }}">Cancel</a>
+
+        {% elif order.status == "Cancelled" %}
+            <span class="badge bg-danger">Cancelled</span>
+
+        {% else %}
+            —
+        {% endif %}
+
+    </td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}

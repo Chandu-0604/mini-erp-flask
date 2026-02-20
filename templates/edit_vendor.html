@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Edit Vendor</h2>
+
+<form method="POST">
+
+    <label>Name:</label><br>
+    <input class="form-control" type="text" name="name" value="{{ vendor.name }}" required><br>
+
+    <label>Email:</label><br>
+    <input class="form-control" type="email" name="email" value="{{ vendor.email }}"><br>
+
+    <label>Phone:</label><br>
+    <input class="form-control" type="text" name="phone" value="{{ vendor.phone }}"><br>
+
+    <label>Address:</label><br>
+    <textarea class="form-control" name="address">{{ vendor.address }}</textarea><br>
+
+    <button class="btn btn-primary" type="submit">Update Vendor</button>
+
+</form>
+
+{% endblock %}

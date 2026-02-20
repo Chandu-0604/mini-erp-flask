@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Mini ERP Dashboard</h2>
+<div class="mb-4">
+
+    <a href="/add-vendor" class="btn btn-primary me-2">
+        + Add Vendor
+    </a>
+
+    <a href="/add-product" class="btn btn-success me-2">
+        + Add Product
+    </a>
+
+    <a href="/create-po" class="btn btn-warning">
+        + Create Purchase Order
+    </a>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h5>Manage Vendors</h5>
+                <p>Add, edit and manage supplier records</p>
+                <a class="btn btn-primary" href="/vendors">Go to Vendors</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h5>Manage Products</h5>
+                <p>Add and update product catalog</p>
+                <a class="btn btn-success" href="/products">Go to Products</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h5>Purchase Orders</h5>
+                <p>Create and manage purchase orders</p>
+                <a class="btn btn-warning" href="/purchase-orders">View Orders</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row mt-4">
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h5>Reports & Analytics</h5>
+                <p>View ERP statistics</p>
+                <a class="btn btn-dark" href="/reports">View Reports</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<hr class="my-5">
+
+<h4>Recent Purchase Orders</h4>
+
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Vendor</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Status</th>
+    </tr>
+
+    {% for order in recent_orders %}
+    <tr>
+        <td>{{ order.id }}</td>
+        <td>{{ order.vendor.name }}</td>
+        <td>{{ order.product.name }}</td>
+        <td>{{ order.quantity }}</td>
+        <td>
+            {% if order.status == "Approved" %}
+                <span class="badge bg-success">Approved</span>
+            {% elif order.status == "Cancelled" %}
+                <span class="badge bg-danger">Cancelled</span>
+            {% else %}
+                <span class="badge bg-warning text-dark">Pending</span>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}
